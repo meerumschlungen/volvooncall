@@ -15,9 +15,10 @@ RUN set -x \
   ;
 
 RUN pip --no-cache-dir --trusted-host pypi.org install --upgrade -r /app/requirements.txt pip coloredlogs libnacl \
-  && pip install /app && rm -rf /app \
+  && pip install /app \
   ;
 
 USER voc
 
 ENTRYPOINT ["dumb-init", "--", "voc", "mqtt"]
+
